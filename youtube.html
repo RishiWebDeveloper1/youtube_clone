@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+    <link rel="shortcut icon" href="images\youtube_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="youtube.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="tool-bar-box">
+            <div class="logo-box">
+                <a href="">
+                    <img src="images\youtube_icon.png" alt="YouTube" class="logo-icon">
+                </a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search...">
+                <div class="search-button" onclick="serachQuery()">
+                    <img src="images/search_button_icon.png" alt="" class="search-button-icon">
+                </div>
+            </div>
+        </div>
+        <div class="video-feed">
+            <div id="searchResultsBox">
+
+
+
+
+
+
+
+                    <!-- <div class="search-result">
+                        <div class="video-detail-box"
+                            onclick="storeDataToLocal('LIVE: PM Modi pays floral tribute at the statue of Babasaheb Ambedkar in Mumbai', 'VbQsDdIx-Qk', 'Prime Minister Narendra Modi pays floral tribute at the statue of Babasaheb Ambedkar in Mumbai. #narendramodi ...', 'UC1NF71EwP41VdjAU1iXdLkw')">
+                            <img class="thumbnail-image" src="https://i.ytimg.com/vi/VbQsDdIx-Qk/hqdefault.jpg"
+                                alt="LIVE: PM Modi pays floral tribute at the statue of Babasaheb Ambedkar in Mumbai">
+                            <h3 class="title">LIVE: PM Modi pays floral tribute at the statue of Babasaheb Ambedkar in
+                                Mumbai</h3>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="video-detail-box"
+                            onclick="storeDataToLocal('Ujung Tanduk - Bakwan: Fight Back Episode 15 [ Minecraft Roleplay ]', 'bfOQ6DR4npM', 'bakwanfightback #bfb Join CreamTeam Membership: http://youtube.com/beaconcream/join Donate dimatikan untuk fokus dengan ...', 'UC50LmJxoKQGpeA2e-0JCY7g')">
+                            <img class="thumbnail-image" src="https://i.ytimg.com/vi/bfOQ6DR4npM/hqdefault.jpg"
+                                alt="Ujung Tanduk - Bakwan: Fight Back Episode 15 [ Minecraft Roleplay ]">
+                            <h3 class="title">Ujung Tanduk - Bakwan: Fight Back Episode 15 [ Minecraft Roleplay ]</h3>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="video-detail-box"
+                            onclick="storeDataToLocal('BREAKING: Scottie Scheffler arrested by police before start of PGA championship', '98JBgfYeG64', 'World No. 1 golfer Scottie Scheffler was detained by police and charged with assaulting an officer and other counts Friday outside ...', 'UCaXkIU1QidjPwiAYu6GcHjg')">
+                            <img class="thumbnail-image" src="https://i.ytimg.com/vi/98JBgfYeG64/hqdefault.jpg"
+                                alt="BREAKING: Scottie Scheffler arrested by police before start of PGA championship">
+                            <h3 class="title">BREAKING: Scottie Scheffler arrested by police before start of PGA
+                                championship</h3>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="video-detail-box"
+                            onclick="storeDataToLocal('🤑₹12,000க்கு 👀 Best Mobile 🥳 இதான்ஆ⁉️ | iQOO Z9x impression | TechBoss', '2tsKdLbN7P4', 'iQOO #iQOOZ9x #TechBoss #FullDayFullyLoaded Buy Here: Amazon: https://Techboss.oia.bio/iQOO-Z9x EStore: ...', 'UCnKhQkCUS1oCEvjuTfU4xIw')">
+                            <img class="thumbnail-image" src="https://i.ytimg.com/vi/2tsKdLbN7P4/hqdefault.jpg"
+                                alt="🤑₹12,000க்கு 👀 Best Mobile 🥳 இதான்ஆ⁉️ | iQOO Z9x impression | TechBoss">
+                            <h3 class="title">🤑₹12,000க்கு 👀 Best Mobile 🥳 இதான்ஆ⁉️ | iQOO Z9x impression | TechBoss
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="video-detail-box"
+                            onclick="storeDataToLocal('🔴MI VS LSG: MI OPT TO BOWL FIRST, ARJUN IN PLAYING XI, क्या MUMBAI में दिखेगा KL RAHUL का तूफान?', 'KPC_bRTSCZY', 'MI vs LSG, IPL 2024: Hardik Pandya has won the toss for MI and has decided that the will be bowling first in this battle for pride ...', 'UCVXCo0W9pk2dDkEBNLhTt7A')">
+                            <img class="thumbnail-image" src="https://i.ytimg.com/vi/KPC_bRTSCZY/hqdefault.jpg"
+                                alt="🔴MI VS LSG: MI OPT TO BOWL FIRST, ARJUN IN PLAYING XI, क्या MUMBAI में दिखेगा KL RAHUL का तूफान?">
+                            <h3 class="title">🔴MI VS LSG: MI OPT TO BOWL FIRST, ARJUN IN PLAYING XI, क्या MUMBAI में
+                                दिखेगा KL RAHUL का तूफान?</h3>
+                        </div>
+                    </div>
+                    <div class="search-result">
+                        <div class="video-detail-box"
+                            onclick="storeDataToLocal('&quot;Most intense week of my life&quot; | Jurgen Klopp speaks ahead of final Liverpool match', 'wKmpxcU1jJw', 'Subscribe to Sky Sports News: http://bit.ly/SkySportsNewsSub Jurgen Klopp speaks in his final pre-match press conference ahead ...', 'UCcw05gGzjLIs5dnxGkQHMvw')">
+                            <img class="thumbnail-image" src="https://i.ytimg.com/vi/wKmpxcU1jJw/hqdefault.jpg"
+                                alt="&quot;Most intense week of my life&quot; | Jurgen Klopp speaks ahead of final Liverpool match">
+                            <h3 class="title">"Most intense week of my life" | Jurgen Klopp speaks ahead of final
+                                Liverpool match</h3>
+                        </div>
+                    </div>
+                    
+                </div> -->
+                
+
+
+            </div>
+            <div class="show_more_box">
+                <div class="show_more">
+                    show more
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="youtube.js"></script>
+    <script src="key_functionality.js"></script>
+</body>
+
+</html>

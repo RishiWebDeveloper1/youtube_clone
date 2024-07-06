@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../../images/youtube_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="video_player.css">
+    <title>YouTube</title>
+</head>
+
+<body>
+    <!-- https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1 -->
+    <div class="tool-bar-box">
+        <div class="logo-box">
+            <a href="/windows-11_interface/components/apps/youtube/components/video_player/video_player.html">
+                <img src="../../images/youtube_icon.png" alt="YouTube" class="logo-icon">
+            </a>
+        </div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <div class="search-button" onclick="serachQuery()">
+                <img src="../../images/search_button_icon.png" alt="" class="search-button-icon">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <iframe src="https://www.youtube.com/embed/DusI3yKpkJc" allow="autoplay" frameborder="0" allowfullscreen="allowfullscreen"
+        mozallowfullscreen="mozallowfullscreen" 
+        msallowfullscreen="msallowfullscreen" 
+        oallowfullscreen="oallowfullscreen" 
+        webkitallowfullscreen="webkitallowfullscreen"></iframe>
+        <div class="title-box">
+            No Title Avalible!!!
+        </div>
+        <div class="channel-detail-box">
+            <div class="channel-logo-box">
+                <img src="https://yt3.ggpht.com/ytc/AIdro_kNaumymcxYzV7_n7_VRbQ2TRlIbU2w5csOMN0cH8jiED8=s48-c-k-c0x00ffffff-no-rj"
+                    alt="" class="channel-logo-icon">
+            </div>
+            <div class="channel-name-box">
+                <div class="channel-name">
+                    code with harry
+                </div>
+                <div class="subscriber-count-box">
+                    100M subscribers
+                </div>
+            </div>
+        </div>
+        <div class="discription-box">
+            <div class="discription">
+                The Discription is not avalible for this channel.!!!
+            </div>
+        </div>
+    </div>
+
+    <script src="video_player.js"></script>
+</body>
+
+</html>

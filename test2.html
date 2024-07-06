@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube Channel Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+    h1, h2, p {
+        margin-top: 0;
+    }
+    .channel-thumbnail {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 id="channelTitle"></h1>
+    <img id="channelThumbnail" class="channel-thumbnail" src="" alt="Channel Thumbnail">
+    <img id="channelLogo" class="channel-thumbnail" src="" alt="Channel Logo">
+    <p id="channelDescription"></p>
+    <p id="subscriberCount"></p>
+    <p id="likeCount"></p>
+</div>
+
+<script>
+    // Fetch channel data
+    fetchChannelData("UCaaDzp5WdD7pRLeu4ZImByA");
+
+    function fetchChannelData(channelId) {
+        // Replace 'YOUR_API_KEY' with your actual YouTube Data API key
+        const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4';
+        const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${apiKey}`;
+        const statisticsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`;
+
+        fetch(channelUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                const channelData = data.items[0].snippet;
+                displayChannelData(channelData);
+            })
+            .catch(error => {
+                console.error('Error fetching channel data:', error);
+            });
+
+        fetch(statisticsUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                const statistics = data.items[0].statistics;
+                displayStatistics(statistics);
+            })
+            .catch(error => {
+                console.error('Error fetching statistics:', error);
+            });
+    }
+
+    function displayChannelData(channelData) {
+        console.log(channelData)
+        // Display channel data on the web page
+        document.getElementById('channelTitle').textContent = channelData.title;
+        document.getElementById('channelThumbnail').src = channelData.thumbnails.default.url;
+        document.getElementById('channelLogo').src = channelData.thumbnails.high.url;
+        document.getElementById('channelDescription').textContent = channelData.description;
+    }
+
+    function displayStatistics(statistics) {
+        console.log(statistics)
+        // Display statistics data on the web page
+        document.getElementById('subscriberCount').textContent = `Subscribers: ${statistics.subscriberCount}`;
+        document.getElementById('likeCount').textContent = `Likes: ${statistics.likeCount}`;
+    }
+</script>
+
+</body>
+</html>
