@@ -166,6 +166,7 @@ iframe {
     height: 118px;
     min-height: 118px;
     padding: 15px;
+    /* margin: 20px 0 20px 0; */
     margin-top: 20px;
     background-color: rgb(74, 73, 73);
     border-radius: 10px;
