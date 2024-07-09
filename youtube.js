@@ -253,11 +253,20 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchVideos();
         }
     }, 1000);
+
+    let mainContainer = document.querySelector(".main-container");
+    let secondContainer = document.querySelector(".second-container");
+
+    mainContainer.style.display = 'block';
+    secondContainer.style.display = 'none';
 });
 
 document.getElementById("homePage").addEventListener('click', () => {
     let mainContainer = document.querySelector(".main-container");
     let secondContainer = document.querySelector(".second-container");
+
+    let video = document.querySelector("iframe")
+    video.src = "";
 
     mainContainer.style.display = 'block';
     secondContainer.style.display = 'none';
