@@ -91,8 +91,8 @@ function storeQuery(query) {
 
 // ************************************** DOM load video display ***************************************************************
 
-const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4'; // my own key
-// const apiKey = 'AIzaSyB61dCiMiNQ0njfW4uUCORhE2P96oQrMs0';
+// const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4'; // my own key
+const apiKey = 'AIzaSyB61dCiMiNQ0njfW4uUCORhE2P96oQrMs0';
 // const apiKey = 'AIzaSyDQvEF9PuhdW3JJM28VQZXQGOo84iYvd-Q';
 // const apiKey = 'AIzaSyAzfFLwjVLNVIHbBf8EWOSH3nCE0zLgF44';
 // const apiKey = 'AIzaSyAn8h71VOzmap8ve9kxoCHqKoE_T79ADD8'; //h
@@ -127,7 +127,8 @@ const channels = [
     'UCttspZesZIDEwwpVIgoZtWQ'  // India TV
 ];
 
-const movieQueries = ['Latest Hindi Movies', 'New hollywood Movies', 'cartoon in hind', 'new comedy video'];
+const movieQueries = ['python programming', 'tech moblie', 'javascript new language', 'web hosting', 'html tricks', 'css styling', 'react development', 'mern stack development', 'django backend'];
+// const movieQueries = ['Latest Hindi Movies', 'New hollywood Movies', 'cartoon in hind', 'new comedy video'];
 
 const newsQueries = ['Latest News hindi', 'Breaking News hindi', 'Recent News hindi', 'hindi news', 'yesterday news hindi'];
 
