@@ -1,6 +1,6 @@
 let iframe = document.querySelector('iframe');
 let title = document.querySelector('.title-box');
-let discription = document.querySelector('.discription-box');
+let discription = document.querySelector('.discription');
 
 let getTitle = localStorage.getItem('title-youtube');
 let getUrl = localStorage.getItem('url-youtube');

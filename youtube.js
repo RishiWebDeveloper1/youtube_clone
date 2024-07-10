@@ -15,7 +15,7 @@ function serachQuery() {
 function fetchSearchResults(searchTerm) {
     // const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4';
     const apiKey = 'AIzaSyAkwWwQdwiHGsPvxCf0_PEZRVYCIBnmasw';
-    const maxResults = 30;
+    const maxResults = 150;
 
     const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${apiKey}&maxResults=${maxResults}&part=snippet&type=video`;
 
@@ -92,9 +92,9 @@ function storeQuery(query) {
 // ************************************** DOM load video display ***************************************************************
 
 // const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4'; // my own key
-const apiKey = 'AIzaSyB61dCiMiNQ0njfW4uUCORhE2P96oQrMs0';
+// const apiKey = 'AIzaSyB61dCiMiNQ0njfW4uUCORhE2P96oQrMs0';
 // const apiKey = 'AIzaSyDQvEF9PuhdW3JJM28VQZXQGOo84iYvd-Q';
-// const apiKey = 'AIzaSyAzfFLwjVLNVIHbBf8EWOSH3nCE0zLgF44';
+const apiKey = 'AIzaSyAzfFLwjVLNVIHbBf8EWOSH3nCE0zLgF44';
 // const apiKey = 'AIzaSyAn8h71VOzmap8ve9kxoCHqKoE_T79ADD8'; //h
 // const apiKey = 'AIzaSyD3WKXZwbplcvQ2BlmIj4n3FlyFpvY_47M';
 
@@ -203,7 +203,7 @@ function displayVideos(videos) {
         const channelId = video.snippet.channelId;
         let duration = formatDuration(video.contentDetails.duration);
         let durationCheck = durationChecker(duration);
-        
+
         if (durationCheck == true) {
             const resultItem = document.createElement('div');
             resultItem.classList.add('search-result');
@@ -214,7 +214,7 @@ function displayVideos(videos) {
                     <h3 class="title">${title}</h3>
                 </div>
             `;
-    
+
             searchResults.appendChild(resultItem);
         }
     });
@@ -245,6 +245,13 @@ function discriptionRepair(text) {
 
 document.addEventListener('DOMContentLoaded', () => {
     searchResults.innerHTML = '';
+    fetchVideos();
+    fetchVideos();
+    fetchVideos();
+    fetchVideos();
+    fetchVideos();
+    fetchVideos();
+    fetchVideos();
     fetchVideos();
     let showMore = document.querySelector('.show_more');
     showMore.addEventListener('click', fetchVideos);
@@ -281,17 +288,17 @@ document.getElementById("homePage").addEventListener('click', () => {
 function loadCurrentVideo() {
     let iframe = document.querySelector('iframe');
     let title = document.querySelector('.title-box');
-    let discription = document.querySelector('.discription-box');
-    
+    let discription = document.querySelector('.discription');
+
     let getTitle = localStorage.getItem('title-youtube');
     let getUrl = localStorage.getItem('url-youtube');
     let getDiscription = localStorage.getItem('discription-youtube');
     let getChannelId = localStorage.getItem('channelId-youtube');
-    
+
     iframe.src = `https://www.youtube.com/embed/${getUrl}?autoplay=1&rel=0"`;
     title.textContent = getTitle;
     discription.textContent = getDiscription;
-    
+
     const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4';
     const channelUrl = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${getChannelId}&key=${apiKey}`;
     const statisticsUrl = `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${getChannelId}&key=${apiKey}`;
@@ -305,7 +312,7 @@ function loadCurrentVideo() {
         .catch(error => {
             console.error('Error fetching channel data:', error);
         });
-    
+
     fetch(statisticsUrl)
         .then(response => response.json())
         .then(data => {
@@ -315,17 +322,35 @@ function loadCurrentVideo() {
         .catch(error => {
             console.error('Error fetching statistics:', error);
         });
-    
+
     function displayChannelData(channelData) {
         console.log(channelData)
         // Display channel data on the web page
         document.querySelector('.channel-logo-icon').src = channelData.thumbnails.high.url;
         document.querySelector('.channel-name').textContent = channelData.title;
     }
-    
+
     function displayStatistics(statistics) {
         // Display statistics data on the web page
         document.querySelector('.subscriber-count-box').textContent = `${statistics.subscriberCount} subscribers`;
         // document.getElementById('likeCount').textContent = `${statistics.likeCount}`;
     }
+}
+
+
+document.querySelector(".more-discription").addEventListener("click", showMoreDiscription)
+
+function showMoreDiscription() {
+    let discriptionBox = document.querySelector(".discription-box");
+    let moreDiscripton = document.querySelector(".more-discription");
+
+    if (discriptionBox.offsetHeight == "118") {
+        discriptionBox.style.minHeight = "250px";
+        moreDiscripton.textContent = "Show Less";
+    }
+    else {
+        discriptionBox.style.minHeight = "118px";
+        moreDiscripton.textContent = "...More";
+    }
+
 }
