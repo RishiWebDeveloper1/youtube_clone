@@ -1,0 +1,40 @@
+
+.bg-loading {
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading {
+    width: 80px;
+    height: 80px;
+    background-image: conic-gradient(rgb(255, 255, 255), transparent);
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: loading 2s infinite;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.front-loading-bg {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(22, 22, 22);
+    border-radius: 100px;
+}

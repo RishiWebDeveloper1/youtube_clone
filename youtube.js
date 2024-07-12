@@ -94,9 +94,9 @@ function storeQuery(query) {
 // const apiKey = 'AIzaSyCkzOqQxFUSEBsN7pO_W797gQCZJ9_haM4'; // my own key
 // const apiKey = 'AIzaSyB61dCiMiNQ0njfW4uUCORhE2P96oQrMs0';
 // const apiKey = 'AIzaSyDQvEF9PuhdW3JJM28VQZXQGOo84iYvd-Q';
-// const apiKey = 'AIzaSyAzfFLwjVLNVIHbBf8EWOSH3nCE0zLgF44';
+const apiKey = 'AIzaSyAzfFLwjVLNVIHbBf8EWOSH3nCE0zLgF44';
 // const apiKey = 'AIzaSyAn8h71VOzmap8ve9kxoCHqKoE_T79ADD8'; //h
-const apiKey = 'AIzaSyD3WKXZwbplcvQ2BlmIj4n3FlyFpvY_47M';
+// const apiKey = 'AIzaSyD3WKXZwbplcvQ2BlmIj4n3FlyFpvY_47M';
 
 // const apiKey = 'AIzaSyAwM_RLjqj8dbbMAP5ls4qg1olDsaxSq5s';
 
@@ -244,21 +244,23 @@ function discriptionRepair(text) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    let loadingHtml = `
+        <div class="bg-loading">
+            <div class="loading">
+                <div class="front-loading-bg"></div>
+            </div>
+        </div>
+    `
     searchResults.innerHTML = '';
     fetchVideos();
-    fetchVideos();
-    fetchVideos();
-    fetchVideos();
-    fetchVideos();
-    fetchVideos();
-    fetchVideos();
-    fetchVideos();
+
     let showMore = document.querySelector('.show_more');
     showMore.addEventListener('click', fetchVideos);
 
-    setTimeout(() => {
-        if (searchResults.innerHTML == '') {
+    setTimeout(async () => {
+        if (searchResults.innerHTML == '' || searchResults.innerHTML == loadingHtml) {
             fetchVideos();
+            console.log("dom load and video are searching.....")
         }
     }, 1000);
 
@@ -269,16 +271,26 @@ document.addEventListener('DOMContentLoaded', () => {
     secondContainer.style.display = 'none';
 });
 
-document.getElementById("homePage").addEventListener('click', () => {
-    let mainContainer = document.querySelector(".main-container");
-    let secondContainer = document.querySelector(".second-container");
+loading()
+let loadingInterval = setInterval(loading, 100);
+async function loading() {
+    let loadingHtml = `
+        <div class="bg-loading">
+            <div class="loading">
+                <div class="front-loading-bg"></div>
+            </div>
+        </div>
+    `
 
-    let video = document.querySelector("iframe")
-    video.src = "";
+    if (searchResults.innerHTML == '') {
+        searchResults.innerHTML = loadingHtml;
+    }
+    else if (searchResults.innerHTML != '' && searchResults.innerHTML != loadingHtml) {
+        document.querySelector(".bg-loading").remove();
+        clearInterval(loadingInterval);
+    }
+}
 
-    mainContainer.style.display = 'block';
-    secondContainer.style.display = 'none';
-});
 
 // ********************** video player logic ***************************
 
@@ -351,6 +363,18 @@ function showMoreDiscription() {
     else {
         discriptionBox.style.minHeight = "118px";
         moreDiscripton.textContent = "...More";
+
     }
 
 }
+
+document.getElementById("homePage").addEventListener('click', () => {
+    let mainContainer = document.querySelector(".main-container");
+    let secondContainer = document.querySelector(".second-container");
+
+    let video = document.querySelector("iframe")
+    video.src = "";
+
+    mainContainer.style.display = 'block';
+    secondContainer.style.display = 'none';
+});
