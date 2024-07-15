@@ -95,12 +95,12 @@ function storeQuery(query) {
 // const apiKey = 'AIzaSyB61dCiMiNQ0njfW4uUCORhE2P96oQrMs0';
 // const apiKey = 'AIzaSyDQvEF9PuhdW3JJM28VQZXQGOo84iYvd-Q';
 // const apiKey = 'AIzaSyAzfFLwjVLNVIHbBf8EWOSH3nCE0zLgF44';
-// const apiKey = 'AIzaSyAn8h71VOzmap8ve9kxoCHqKoE_T79ADD8'; //h
-const apiKey = 'AIzaSyD3WKXZwbplcvQ2BlmIj4n3FlyFpvY_47M';
+const apiKey = 'AIzaSyAn8h71VOzmap8ve9kxoCHqKoE_T79ADD8'; //h
+// const apiKey = 'AIzaSyD3WKXZwbplcvQ2BlmIj4n3FlyFpvY_47M';
 
 // const apiKey = 'AIzaSyAwM_RLjqj8dbbMAP5ls4qg1olDsaxSq5s';
 
-const maxResults = 10;
+const maxResults = 109;
 
 function formatDuration(isoDuration) {
     const match = isoDuration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
@@ -243,7 +243,14 @@ function discriptionRepair(text) {
     return text;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', contentLoader); 
+function contentLoader() {
+    let mainContainer = document.querySelector(".main-container");
+    let secondContainer = document.querySelector(".second-container");
+
+    mainContainer.style.display = 'block';
+    secondContainer.style.display = 'none';
+    
     let loadingHtml = `
         <div class="bg-loading">
             <div class="loading">
@@ -263,15 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("dom load and video are searching.....")
         }
     }, 1000);
+}
 
-    let mainContainer = document.querySelector(".main-container");
-    let secondContainer = document.querySelector(".second-container");
-
-    mainContainer.style.display = 'block';
-    secondContainer.style.display = 'none';
-});
-
-loading()
 let loadingInterval = setInterval(loading, 100);
 async function loading() {
     let loadingHtml = `
@@ -280,17 +280,86 @@ async function loading() {
                 <div class="front-loading-bg"></div>
             </div>
         </div>
-    `
+    `;
+    let noInternetPageHtml = `
+        <div class="no-internet-box">
+            <img src="images/no_internet_astronut.png" alt="" class="no-internet-astronut-image">
+            <div class="you-are-offline-box">
+                You're offline
+            </div>
+            <div class="retry-button-box">
+                Retry
+            </div>
+        </div>
+    `;
 
-    if (searchResults.innerHTML == '') {
+    if (searchResults.innerHTML == '' && window.navigator.onLine == true) {
         searchResults.innerHTML = loadingHtml;
     }
+    else if (searchResults.innerHTML == '' && window.navigator.onLine == false) {
+        searchResults.innerHTML = noInternetPageHtml;
+    }
     else if (searchResults.innerHTML != '' && searchResults.innerHTML != loadingHtml) {
-        document.querySelector(".bg-loading").remove();
+        if (document.querySelector(".bg-loading")) {
+            document.querySelector(".bg-loading").remove();
+        }
+        
         clearInterval(loadingInterval);
+    }
+    else if (searchResults.innerHTML != '' && searchResults.innerHTML != loadingHtml) {
+        if (document.querySelector(".no-internet-box")) {
+            document.querySelector(".no-internet-box").remove();
+        }
     }
 }
 
+function internetChecker() {
+    console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
+
+    console.log('window.navigator.onLine is ' + window.navigator.onLine)
+}
+
+console.log(window.navigator.onLine);
+window.addEventListener('offline', () => {
+    let noInternetPageHtml = `
+        <div class="no-internet-box">
+            <img src="images/no_internet_astronut.png" alt="" class="no-internet-astronut-image">
+            <div class="you-are-offline-box">
+                You're offline
+            </div>
+            <div class="retry-button-box">
+                Retry
+            </div>
+        </div>
+    `;
+
+    if (searchResults.innerHTML == '') {
+        searchResults.innerHTML = noInternetPageHtml;
+    }
+});
+
+window.addEventListener('online', () => {
+    let noInternetPageHtml = `
+        <div class="no-internet-box">
+            <img src="images/no_internet_astronut.png" alt="" class="no-internet-astronut-image">
+            <div class="you-are-offline-box">
+                You're offline
+            </div>
+            <div class="retry-button-box">
+                Retry
+            </div>
+        </div>
+    `;
+    
+    if (searchResults.innerHTML != '' && searchResults.innerHTML == noInternetPageHtml) {
+        document.querySelector(".no-internet-box").remove();
+        contentLoader();
+    }
+});
+
+window.addEventListener('play', () => {
+    alert("hello video is play !!!!!!!!!!!!!!!!!!!")
+});
 
 // ********************** video player logic ***************************
 

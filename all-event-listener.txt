@@ -1,0 +1,44 @@
+In JavaScript, the `addEventListener` method is used to attach an event handler to an element, listening for a specific type of event. The number of different event types that can be used with `addEventListener` depends on the environment where JavaScript is running (like web browsers or Node.js), but for web browsers, here are the commonly supported event types:
+
+1. **Mouse Events:**
+   - `click`
+   - `dblclick`
+   - `mousedown`
+   - `mouseup`
+   - `mousemove`
+   - `mouseover`
+   - `mouseout`
+   - `mouseenter`
+   - `mouseleave`
+   - `contextmenu`
+
+2. **Keyboard Events:**
+   - `keydown`
+   - `keyup`
+   - `keypress`
+
+3. **Form Events:**
+   - `submit`
+   - `reset`
+   - `change`
+   - `focus`
+   - `blur`
+   - `input`
+   - `select`
+
+4. **Document Loading Events:**
+   - `DOMContentLoaded` (fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading)
+
+5. **Window Events:**
+   - `load` (fires when the whole page has loaded, including all frames, objects, and images)
+   - `resize` (fires when the window size has changed)
+   - `scroll` (fires when the document view or an element has been scrolled)
+
+6. **Miscellaneous Events:**
+   - `error` (fires when an error occurs during the loading of a resource)
+   - `offline` (fires when the browser starts to work offline)
+   - `online` (fires when the browser starts to work online)
+
+These are some of the most commonly used event types. There are other specific events related to various HTML elements and JavaScript APIs that can be used as well.
+
+It's important to note that the availability of certain events can vary slightly depending on the browser and its version, though modern browsers generally support a consistent set of events.

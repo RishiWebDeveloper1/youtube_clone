@@ -1,0 +1,29 @@
+.no-internet-box {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.no-internet-astronut-image {
+    width: 250px;
+    height: 250px;
+}
+.you-are-offline-box {
+    color: white;
+    font-size: 50px;
+    font-family: sans-serif, arial;
+    font-weight: bolder;
+}
+.retry-button-box {
+    width: 80px;
+    height: 40px;
+    margin-top: 50px;
+    color: white;
+    background-color: blue;
+    font-family: sans-serif, arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>internet checker</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .no-internet-box {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .no-internet-astronut-image {
+            width: 250px;
+            height: 250px;
+        }
+
+        .you-are-offline-box {
+            color: black;
+            font-size: 45px;
+            font-family: sans-serif, arial;
+            font-weight: bolder;
+        }
+
+        .retry-button-box {
+            width: 80px;
+            height: 40px;
+            margin-top: 50px;
+            color: white;
+            background-color: blue;
+            font-family: sans-serif, arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="no-internet-box">
+        <img src="images/no_internet_astronut.png" alt="" class="no-internet-astronut-image">
+        <div class="you-are-offline-box">
+            You're offline
+        </div>
+        <div class="retry-button-box">
+            Retry
+        </div>
+    </div>
+
+    <script>
+        console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
+
+        window.addEventListener('online', () => console.log('Became online'));
+        window.addEventListener('offline', () => console.log('Became offline'));
+        console.log('window.navigator.onLine is ' + window.navigator.onLine)
+    </script>
+</body>
+
+</html>
